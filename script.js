@@ -42,23 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let slideInterval;
     const slideDuration = 5000;
 
-    // Navigation Functions
-    function previousSlide() {
-        updateSlide('prev');
-        resetInterval();
-    }
-
-    function nextSlide() {
-        updateSlide('next');
-        resetInterval();
-    }
-
-    // Add event listeners for buttons
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', previousSlide);
-        nextBtn.addEventListener('click', nextSlide);
-    }
-
     function updateSlide(direction) {
         if (isTransitioning) return;
         isTransitioning = true;
@@ -101,13 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Navigation controls
-    window.previousSlide = () => {
-        updateSlide('prev');
-        resetInterval();
-    }
-    window.nextSlide = () => {
-        updateSlide('next');
-        resetInterval();
+    const previousSlide = () => { updateSlide('prev'); resetInterval(); }
+    const nextSlide = () => { updateSlide('next'); resetInterval(); }
+
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', previousSlide);
+        nextBtn.addEventListener('click', nextSlide);
     }
 
     // Initialize carousel
@@ -125,11 +107,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-links');
 
-    hamburger?.addEventListener('click', function (e) {
-        e.stopPropagation();
-        navMenu.classList.toggle('active');
-        this.classList.toggle('is-active');
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    }
 
     // Dropdown functionality
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
@@ -139,12 +123,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 const dropdown = this.closest('.dropdown');
                 const wasActive = dropdown.classList.contains('active');
 
-                // Close all dropdowns first
                 document.querySelectorAll('.dropdown').forEach(d => {
                     d.classList.remove('active');
                 });
 
-                // Toggle current dropdown
                 if (!wasActive) {
                     dropdown.classList.add('active');
                 }
@@ -154,49 +136,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Event handlers
     document.addEventListener('click', function (e) {
-        // Close menus
+        // Close menus on mobile
         if (window.innerWidth <= 768) {
-            if (!e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
-                navMenu.classList.remove('active');
-                hamburger?.classList.remove('is-active');
+            if (!e.target.closest('.nav-links') &&
+                !e.target.closest('.hamburger') &&
+                !e.target.closest('.dropdown')) {
+                navMenu?.classList.remove('active');
+                hamburger?.classList.remove('active');
             }
         }
 
-        document.addEventListener('click', function (e) {
-            if (window.innerWidth <= 768) {
-                if (!e.target.closest('.dropdown') &&
-                    !e.target.closest('.hamburger')) {
-                    document.querySelectorAll('.dropdown').forEach(d => {
-                        d.classList.remove('active');
-                    });
-                }
-            }
-        });
+        // Close dropdowns when clicking outside
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                d.classList.remove('active');
+            });
+        }
+    });
 
-        // Handle window resize for carousel
-        window.addEventListener('resize', () => {
+    window.addEventListener('resize', () => {
+        // Carousel resize handling
+        if (container) {
             container.style.transition = 'none';
             container.style.transform = `translateX(-${currentSlide * 100}%)`;
             setTimeout(() => {
                 container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
             }, 10);
-        });
+        }
 
-        // Reset mobile menu
-        // Close dropdowns on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                document.querySelectorAll('.dropdown').forEach(d => {
-                    d.classList.remove('active');
-                });
-            }
-        });
+        // Reset mobile menu on desktop
+        if (window.innerWidth > 768) {
+            navMenu?.classList.remove('active');
+            hamburger?.classList.remove('active');
+            document.querySelectorAll('.dropdown').forEach(d => {
+                d.classList.remove('active');
+            });
+        }
     });
 
-// Initialize components
+    // Initialize components
     initCarousel();
     if (container) {
         container.addEventListener('mouseenter', () => clearInterval(slideInterval));
         container.addEventListener('mouseleave', resetInterval);
     }
-}
+});
