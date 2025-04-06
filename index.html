@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Knowledge</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-$END$
+<nav>
+    <div class="nav-container">
+        <img src="website-logo.png" alt="Logo" class="logo">
+        <div class="site-name">Islamic Knowledge</div>
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <div class="dropdown">
+                <a href="#quran" class="dropdown-toggle">Quran <span class="caret">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="#simple-english" class="dropdown-item">Simple English</a>
+                    <a href="#arabic" class="dropdown-item">Arabic</a>
+                </div>
+            </div>
+            <a href="https://example.com/fatwa">Fatwa</a>
+            <a href="https://example.com/aqeedah">Aqeedah</a>
+            <a href="https://example.com/prayer-times">Prayer Times</a>
+            <a href="https://example.com/sunnah">Sunnah</a>
+            <a href="scholars.html">Scholars</a>
+        </div>
+    </div>
+</nav>
+
+<section class="video-section">
+    <video autoplay muted loop id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+    <div class="video-content">
+        <div class="slide active">
+            <h1>Quran</h1>
+            <p>Discover the divine revelation in multiple formats</p>
+        </div>
+        <!-- Add more slides here -->
+    </div>
+</section>
+
+<main class="container">
+    <section class="content-section">
+        <h2>Six Pillars of Islam</h2>
+        <p>The fundamental beliefs that form the foundation of Muslim faith</p>
+        <div class="pillars-grid">
+            <!-- Add your pillar icons here -->
+        </div>
+    </section>
+    <!-- Repeat sections as needed -->
+</main>
 </body>
 </html>

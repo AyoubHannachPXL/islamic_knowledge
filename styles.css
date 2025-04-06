@@ -29,19 +29,21 @@ nav {
 
 .logo {
     height: 40px;
-    margin-right: 1rem;
+    margin-right: 0.5rem; /* Proper spacing between logo and site name */
 }
 
 .site-name {
     font-size: 1.5rem;
     font-weight: bold;
     color: #2c3e50;
+    margin-right: auto; /* Pushes navigation links to the right */
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-left: auto;
+    align-items: center;
 }
 
 .nav-links a {
@@ -49,37 +51,128 @@ nav {
     color: #2c3e50;
     transition: color 0.3s ease;
     position: relative;
-}
-
-.nav-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #3498db;
-}
-
-.nav-links a:hover {
-    color: #3498db;
+    padding: 0.5rem 0;
 }
 
 .dropdown {
     position: relative;
 }
 
-.dropdown-content {
+.dropdown::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    z-index: 1001;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.caret {
+    font-size: 0.6em;
+    margin-left: 2px;
+}
+
+.dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    min-width: 160px;
+    padding: 0 0;
+    z-index: 1000;
+    text-align: center; /* Center menu text */
+    margin-top: 10px; /* Increased space below parent link */
+    transition: opacity 0.2s, visibility 0.2s; /* Add smooth transition */
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-menu {
     display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: transparent;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0 1rem;
+    color: #2c3e50;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+    text-align: center; /* Ensure text centering */
+    width: 100%; /* Full width for proper click area */
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+    transform: scaleX(1);
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:not(.active):hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+    transform: scaleX(1);
+}
+
+/* For non-Scholars pages */
+.nav-links a[href="scholars.html"]:not(.active):hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+    transform: scaleX(1);
+}
+
+/* For Scholars page */
+.nav-links a[href="scholars.html"].active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+    transform: scaleX(1);
 }
 
 .container {
@@ -143,4 +236,65 @@ nav {
     margin-top: 1rem;
 }
 
-/* Add more styles for other sections */
+/* Add more styles for other sections as needed */
+
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1rem;
+        position: relative;
+    }
+
+    .logo {
+        height: 35px;
+        margin-right: 0.3rem;
+    }
+
+    .site-name {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        margin-top: 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #2c3e50;
+        margin: 5px 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+}
