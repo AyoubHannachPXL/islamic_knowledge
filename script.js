@@ -108,41 +108,53 @@ document.addEventListener('DOMContentLoaded', function () {
     const navMenu = document.querySelector('.nav-links');
 
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function (e) {
+        hamburger.addEventListener('click', function(e) {
             e.stopPropagation();
-            navMenu.classList.toggle('active');
             this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+
+            // Close all dropdowns when menu closes
+            if (!navMenu.classList.contains('active')) {
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+            }
         });
     }
 
     // Dropdown functionality
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function (e) {
+        toggle.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
                 const dropdown = this.closest('.dropdown');
                 const wasActive = dropdown.classList.contains('active');
 
-                document.querySelectorAll('.dropdown').forEach(d => {
-                    d.classList.remove('active');
-                });
+                // Toggle current dropdown
+                dropdown.classList.toggle('active', !wasActive);
 
-                if (!wasActive) {
-                    dropdown.classList.add('active');
-                }
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== dropdown) d.classList.remove('active');
+                });
             }
         });
     });
 
     // Event handlers
-    document.addEventListener('click', function (e) {
-        // Close menus on mobile
+    document.addEventListener('click', function(e) {
+        // Mobile menu handling
         if (window.innerWidth <= 768) {
-            if (!e.target.closest('.nav-links') &&
-                !e.target.closest('.hamburger') &&
-                !e.target.closest('.dropdown')) {
+            const isMenuClick = e.target.closest('.nav-links') ||
+                e.target.closest('.hamburger') ||
+                e.target.closest('.dropdown');
+
+            if (!isMenuClick) {
                 navMenu?.classList.remove('active');
                 hamburger?.classList.remove('active');
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
             }
         }
 
@@ -165,13 +177,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Reset mobile menu on desktop
-        if (window.innerWidth > 768) {
-            navMenu?.classList.remove('active');
-            hamburger?.classList.remove('active');
-            document.querySelectorAll('.dropdown').forEach(d => {
-                d.classList.remove('active');
-            });
-        }
+        window.addEventListener('resize', () => {
+            // Handle carousel positioning
+            if (container) {
+                container.style.transition = 'none';
+                container.style.transform = `translateX(-${currentSlide * 100}%)`;
+                setTimeout(() => {
+                    container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                }, 10);
+            }
+
+            // Handle responsive menu behavior
+            if (window.innerWidth > 768) { // Desktop
+                // Reset mobile menu state
+                navMenu?.classList.remove('active');
+                hamburger?.classList.remove('active');
+
+                // Reset dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+            } else { // Mobile
+                // Reset desktop hover behaviors
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = '';
+                });
+            }
+        });
     });
 
     // Initialize components
