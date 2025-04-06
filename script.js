@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -35,10 +35,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.querySelector('.slides-container');
     const slides = document.querySelectorAll('.video-slide');
     const contents = document.querySelectorAll('.slide-content');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
     let currentSlide = 0;
     let isTransitioning = false;
     let slideInterval;
     const slideDuration = 5000;
+
+    // Navigation Functions
+    function previousSlide() {
+        updateSlide('prev');
+        resetInterval();
+    }
+
+    function nextSlide() {
+        updateSlide('next');
+        resetInterval();
+    }
+
+    // Add event listeners for buttons
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', previousSlide);
+        nextBtn.addEventListener('click', nextSlide);
+    }
 
     function updateSlide(direction) {
         if (isTransitioning) return;
@@ -82,8 +101,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Navigation controls
-    window.previousSlide = () => { updateSlide('prev'); resetInterval(); }
-    window.nextSlide = () => { updateSlide('next'); resetInterval(); }
+    window.previousSlide = () => {
+        updateSlide('prev');
+        resetInterval();
+    }
+    window.nextSlide = () => {
+        updateSlide('next');
+        resetInterval();
+    }
 
     // Initialize carousel
     function initCarousel() {
@@ -100,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-links');
 
-    hamburger?.addEventListener('click', function(e) {
+    hamburger?.addEventListener('click', function (e) {
         e.stopPropagation();
         navMenu.classList.toggle('active');
         this.classList.toggle('is-active');
@@ -108,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Dropdown functionality
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
+        toggle.addEventListener('click', function (e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
                 const dropdown = this.closest('.dropdown');
@@ -121,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Event handlers
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         // Close menus
         if (window.innerWidth <= 768) {
             if (!e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
@@ -136,21 +161,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Handle window resize for carousel
     window.addEventListener('resize', () => {
-        // Reset carousel position
         container.style.transition = 'none';
         container.style.transform = `translateX(-${currentSlide * 100}%)`;
-        setTimeout(() => container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)', 10);
-
-        // Reset mobile menu
-        if (window.innerWidth > 768) {
-            navMenu.classList.remove('active');
-            hamburger?.classList.remove('is-active');
-        }
+        setTimeout(() => {
+            container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 10);
     });
 
-    // Initialize components
-    initCarousel();
-    container?.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    container?.addEventListener('mouseleave', resetInterval);
+    // Reset mobile menu
+    if (window.innerWidth > 768) {
+        navMenu.classList.remove('active');
+        hamburger?.classList.remove('is-active');
+    }
 });
+
+// Initialize components
+initCarousel();
+container?.addEventListener('mouseenter', () => clearInterval(slideInterval));
+container?.addEventListener('mouseleave', resetInterval);
