@@ -434,6 +434,7 @@ main section a{
     height: 3px;
     background: #2c3e50;
     transition: all 0.3s ease;
+    color: #2c3e50;
 }
 
 .hamburger span {
