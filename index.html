@@ -24,41 +24,142 @@
             <!-- Navigation links here -->
             <a href="index.html" class="active">Home</a>
             <div class="dropdown">
-                <a href="#quran" class="dropdown-toggle">Quran<span class="caret">▼</span></a>
+                <a href="#" class="dropdown-toggle">Quran<span class="caret">▼</span></a>
                 <div class="dropdown-menu">
-                    <a href="#simple-english" class="dropdown-item">Simple English</a>
-                    <a href="#arabic" class="dropdown-item">Arabic</a>
+                    <a href="https://wisemuslim.com/wp-content/uploads/2021/09/Noor-Book.com-The-Clear-Quran-English-Translation-by-Dr-Mustafa-Khattab.pdf"
+                       class="dropdown-item">Simple English</a>
+                    <a href="https://quran.com" class="dropdown-item">Arabic</a>
                 </div>
             </div>
-            <a href="https://example.com/fatwa">Fatwa</a>
-            <a href="https://example.com/aqeedah">Aqeedah</a>
-            <a href="https://example.com/prayer-times">Prayer Times</a>
-            <a href="https://example.com/sunnah">Sunnah</a>
+            <a href="https://islamqa.info">Fatwa</a>
+            <a href="https://islamqa.info">Aqeedah</a>
+            <a href="https://mawaqit.com">Prayer Times</a>
+            <a href="https://sunnah.com">Sunnah</a>
             <a href="scholars.html">Scholars</a>
         </div>
     </div>
 </nav>
 
-<section class="video-section">
-    <video autoplay muted loop id="bg-video">
-        <source src="background.mp4" type="video/mp4">
-    </video>
-    <div class="video-content">
-        <div class="slide active">
-            <h1>Quran</h1>
-            <p>Discover the divine revelation in multiple formats</p>
+<section class="video-carousel">
+    <button class="carousel-btn prev-btn">&#10094;</button>
+    <button class="carousel-btn next-btn">&#10095;</button>
+
+    <div class="slides-container">
+        <!-- Slide 1 -->
+        <div class="video-slide active">
+            <video class="slide-video" autoplay muted loop>
+                <source src="assim.mp4" type="video/mp4">
+            </video>
+            <div class="slide-content active">
+                <h1 class="video-title">Quran</h1>
+                <p class="video-description">Discover the divine revelation in multiple formats</p>
+            </div>
+            <div class="overlay"></div>
         </div>
-        <!-- Add more slides here -->
+
+        <!-- Slide 2 -->
+        <div class="video-slide">
+            <video class="slide-video" muted loop>
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+            <div class="slide-content">
+                <h1 class="video-title">Fatwa</h1>
+                <p class="video-description">Islamic rulings and religious guidance</p>
+            </div>
+            <div class="overlay"></div>
+        </div>
+
+        <!-- Add remaining slides -->
+        <div class="video-slide">
+            <video class="slide-video" muted loop>
+                <source src="video3.mp4" type="video/mp4">
+            </video>
+            <div class="slide-content">
+                <h1 class="video-title">Aqeedah</h1>
+                <p class="video-description">Islamic rulings and religious guidance</p>
+            </div>
+            <div class="overlay"></div>
+        </div>
+
+        <div class="video-slide">
+            <video class="slide-video" muted loop>
+                <source src="video4.mp4" type="video/mp4">
+            </video>
+            <div class="slide-content">
+                <h1 class="video-title">Sunnah</h1>
+                <p class="video-description">Islamic rulings and religious guidance</p>
+            </div>
+            <div class="overlay"></div>
+        </div>
+
+        <div class="video-slide">
+            <video class="slide-video" muted loop>
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+            <div class="slide-content">
+                <h1 class="video-title">Scholars</h1>
+                <p class="video-description">Islamic rulings and religious guidance</p>
+            </div>
+            <div class="overlay"></div>
+        </div>
+
+        <!-- Image Slide -->
+        <div class="video-slide">
+            <img src="prayer-times.jpeg" alt="Description" class="slide-image">
+            <div class="slide-content">
+                <h1 class="video-title">Prayer times</h1>
+                <p class="video-description">Islamic rulings and religious guidance</p>
+            </div>
+            <div class="overlay"></div>
+        </div>
     </div>
 </section>
 
 <main class="container">
-    <section class="content-section">
+    <section class="Pillars-of-islam">
         <h2>Six Pillars of Islam</h2>
-        <p>The fundamental beliefs that form the foundation of Muslim faith</p>
+        <ol>
+            <li>
+                <p class="pillar">Shahada (Declaration of Faith):</p>
+                <ul>
+                    <li>
+                        "La ilaha illallah, Muhammadur rasulullah"
+                        ("There is no god but Allah, and Muhammad is the Messenger of Allah").
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p class="pillar">Salah (Prayer):</p>
+                <ul>
+                    <li>Performing the five daily prayers at prescribed times.</li>
+                </ul>
+            </li>
+            <li>
+                <p class="pillar">Zakat (Obligatory Charity):</p>
+                <ul>
+                    <li>Giving a portion of wealth (2.5% of savings) to those in need annually.</li>
+                </ul>
+            </li>
+            <li>
+                <p class="pillar">Sawm (Fasting in Ramadan):</p>
+                <ul>
+                    <li>Fasting from dawn to sunset during the month of Ramadan.</li>
+                </ul>
+            </li>
+            <li>
+                <p class="pillar">Hajj (Pilgrimage to Mecca):</p>
+                <ul>
+                    <li>Performing the pilgrimage to Mecca at least once in a lifetime (for those physically and
+                        financially
+                        able).
+                    </li>
+                </ul>
+            </li>
+        </ol>
         <div class="pillars-grid">
             <!-- Add your pillar icons here -->
         </div>
+
     </section>
     <!-- Repeat sections as needed -->
 </main>
