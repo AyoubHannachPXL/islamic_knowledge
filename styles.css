@@ -27,6 +27,10 @@ nav {
     margin: 0 auto;
 }
 
+.back2home{
+    text-decoration: none;
+}
+
 .logo {
     height: 40px;
     margin-right: 0.5rem; /* Proper spacing between logo and site name */
@@ -284,6 +288,14 @@ nav {
     font-size: 10rem;
 }
 
+.video-description a{
+    color: #fff;
+}
+
+.pillar{
+    margin-bottom: 4rem;
+}
+
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -324,8 +336,22 @@ nav {
     font-size: 1.2rem;
 }
 
-.pillar{
-    font-weight: bold;
+main h1{
+    text-align: center;
+    text-decoration: none;
+    font-size: 2rem;
+}
+#five-pillars{
+    margin-top: -7rem;
+}
+
+main section a{
+    text-decoration: underline;
+    color: #000;
+}
+
+.Pillars-of-islam p, .Pillars-of-iman p, .Prophets p, .Angels p{
+    margin-left: 9rem;
 }
 
 .scholar-grid {
@@ -356,6 +382,57 @@ nav {
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
+    width: 100%; /* Ensure full width for proper centering */
+}
+
+.social-links a {
+    color: #2c3e50; /* Default color */
+    transition: color 0.3s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none !important;
+    font-size: 1.5rem; /* Adjust this value to match your original size */
+}
+
+.social-links a:hover {
+    color: #3498db; /* Hover color */
+    text-decoration: none !important;
+}
+
+.social-links .fab {
+    width: auto;  /* Remove fixed width if any */
+    height: auto; /* Remove fixed height if any */
+}
+
+/* Specific icon colors */
+.social-links .fa-twitter { color: #1DA1F2; }
+.social-links .fa-facebook { color: #1877F2; }
+.social-links .fa-youtube { color: #FF0000; }
+.social-links .fa-instagram { color: #E1306C; }
+.social-links .fa-linkedin { color: #0A66C2; }
+
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #2c3e50;
+    transition: all 0.3s ease;
 }
 
 /* Add more styles for other sections as needed */
@@ -401,9 +478,20 @@ nav {
     }
 
     .hamburger {
-        display: block;
+        display: flex !important; /* Force show on mobile */
         cursor: pointer;
         margin-left: auto;
+    }
+
+    .hamburger.is-active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.is-active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.is-active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .hamburger span {

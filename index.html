@@ -6,12 +6,14 @@
     <title>Islamic Knowledge</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <nav>
     <div class="nav-container">
-        <img src="website-logo.png" alt="Logo" class="logo">
-        <div class="site-name">Islamic Knowledge</div>
+        <a href="index.html" class="back2home"><img src="website-logo.png" alt="Logo" class="logo"></a>
+        <a href="index.html" class="back2home"><div class="site-name">Islamic Knowledge</div></a>
+
 
         <!-- Hamburger Button -->
         <button class="hamburger">
@@ -33,7 +35,7 @@
             </div>
             <a href="https://islamqa.info">Fatwa</a>
             <a href="https://islamqa.info">Aqeedah</a>
-            <a href="https://mawaqit.com">Prayer Times</a>
+            <a href="https://mawaqit.net/en/">Prayer Times</a>
             <a href="https://sunnah.com">Sunnah</a>
             <a href="scholars.html">Scholars</a>
         </div>
@@ -50,58 +52,67 @@
             <video class="slide-video" autoplay muted playsinline loop>
                 <source src="assim.mp4" type="video/mp4">
             </video>
-            </video>
             <div class="slide-content active">
                 <h1 class="video-title">Quran</h1>
-                <p class="video-description">Discover the divine revelation in multiple formats</p>
+                <p class="video-description">Read the holy book in a clear <a
+                        href="https://wisemuslim.com/wp-content/uploads/2021/09/Noor-Book.com-The-Clear-Quran-English-Translation-by-Dr-Mustafa-Khattab.pdf">English</a>
+                    translation or <a href="https://quran.com">Arabic</a></p>
             </div>
             <div class="overlay"></div>
         </div>
 
         <!-- Slide 2 -->
         <div class="video-slide">
-            <video class="slide-video" autoplay muted playsinline loop>
-                <source src="video2.mp4" type="video/mp4">
-            </video>
-            <div class="slide-content">
-                <h1 class="video-title">Fatwa</h1>
-                <p class="video-description">Islamic rulings and religious guidance</p>
-            </div>
-            <div class="overlay"></div>
+            <a href="https://islamqa.info">
+                <video class="slide-video" autoplay muted playsinline loop>
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+                <div class="slide-content">
+                    <h1 class="video-title">Fatwa</h1>
+                    <p class="video-description">Find clear answers on your questions</p>
+                </div>
+                <div class="overlay"></div>
+            </a>
         </div>
 
         <!-- Add remaining slides -->
         <div class="video-slide">
-            <video class="slide-video" autoplay muted playsinline loop>
-                <source src="video4.mp4" type="video/mp4">
-            </video>
-            <div class="slide-content">
-                <h1 class="video-title">Aqeedah</h1>
-                <p class="video-description">Islamic rulings and religious guidance</p>
-            </div>
-            <div class="overlay"></div>
+            <a href="https://islamqa.info">
+                <video class="slide-video" autoplay muted playsinline loop>
+                    <source src="video4.mp4" type="video/mp4">
+                </video>
+                <div class="slide-content">
+                    <h1 class="video-title">Aqeedah</h1>
+                    <p class="video-description">Core beliefs about Allah</p>
+                </div>
+                <div class="overlay"></div>
+            </a>
         </div>
 
         <div class="video-slide">
-            <video class="slide-video" autoplay muted playsinline loop>
-                <source src="video4.mp4" type="video/mp4">
-            </video>
-            <div class="slide-content">
-                <h1 class="video-title">Sunnah</h1>
-                <p class="video-description">Islamic rulings and religious guidance</p>
-            </div>
-            <div class="overlay"></div>
+            <a href="http://sunnah.com">
+                <video class="slide-video" autoplay muted playsinline loop>
+                    <source src="video4.mp4" type="video/mp4">
+                </video>
+                <div class="slide-content">
+                    <h1 class="video-title">Sunnah</h1>
+                    <p class="video-description">The way of the prohphet Muhammad (ﷺ)</p>
+                </div>
+                <div class="overlay"></div>
+            </a>
         </div>
 
         <div class="video-slide">
-            <video class="slide-video" autoplay muted playsinline loop>
-                <source src="video2.mp4" type="video/mp4">
-            </video>
-            <div class="slide-content">
-                <h1 class="video-title">Scholars</h1>
-                <p class="video-description">Islamic rulings and religious guidance</p>
-            </div>
-            <div class="overlay"></div>
+            <a href="scholars.html">
+                <video class="slide-video" autoplay muted playsinline loop>
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+                <div class="slide-content">
+                    <h1 class="video-title">Scholars</h1>
+                    <p class="video-description">Find trustable scholars that follow the Quran, sunnah and the salaf</p>
+                </div>
+                <div class="overlay"></div>
+            </a>
         </div>
 
         <!-- Image Slide -->
@@ -118,49 +129,77 @@
 
 <main class="container">
     <section class="Pillars-of-islam">
-        <h2>Six Pillars of Islam</h2>
-        <ol>
-            <li>
-                <p class="pillar">Shahada (Declaration of Faith):</p>
-                <ul>
-                    <li>
-                        "La ilaha illallah, Muhammadur rasulullah"
-                        ("There is no god but Allah, and Muhammad is the Messenger of Allah").
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <p class="pillar">Salah (Prayer):</p>
-                <ul>
-                    <li>Performing the five daily prayers at prescribed times.</li>
-                </ul>
-            </li>
-            <li>
-                <p class="pillar">Zakat (Obligatory Charity):</p>
-                <ul>
-                    <li>Giving a portion of wealth (2.5% of savings) to those in need annually.</li>
-                </ul>
-            </li>
-            <li>
-                <p class="pillar">Sawm (Fasting in Ramadan):</p>
-                <ul>
-                    <li>Fasting from dawn to sunset during the month of Ramadan.</li>
-                </ul>
-            </li>
-            <li>
-                <p class="pillar">Hajj (Pilgrimage to Mecca):</p>
-                <ul>
-                    <li>Performing the pilgrimage to Mecca at least once in a lifetime (for those physically and
-                        financially
-                        able).
-                    </li>
-                </ul>
-            </li>
-        </ol>
+        <h1 id="five-pillars">Five Pillars of Islam</h1>
+        <p>Shahada (Declaration of Faith):</p>
+        <p>Salah (Prayer):</p>
+        <p>Zakat (Obligatory Charity):</p>
+        <p>Sawm (Fasting in Ramadan):</p>
+        <p class="pillar">Hajj (Pilgrimage to Mecca):</p>
         <div class="pillars-grid">
             <!-- Add your pillar icons here -->
         </div>
+    </section>
 
+    <section class="Pillars-of-iman">
+        <h1>Five Pillars of Iman</h1>
+        <p>Belief in Allah</p>
+        <p>Belief in the Angels</p>
+        <p>Belief in his books</p>
+        <p>Belief in his messengers</p>
+        <p>Belief in the last day</p>
+        <p class="pillar">Belief in the divine decree both good and bad</p>
+        <div class="pillars-grid">
+            <!-- Add your pillar icons here -->
+        </div>
+    </section>
+
+    <section class="Prophets">
+        <a href="https://islamqa.info/en/answers/95747/how-many-prophets-are-there-in-islam#number-of-prophets-mentioned-in-the-quran">
+            <h1>Names
+                of prophets that are known to us</h1></a>
+
+        <p>Adam</p>
+        <p>Idris</p>
+        <p>Nuh</p>
+        <p>Hud</p>
+        <p>Salih</p>
+        <p>Ibrahim</p>
+        <p>Lut</p>
+        <p>Isma'il</p>
+        <p>Ishaq</p>
+        <p>Ya'qub</p>
+        <p>Yusuf</p>
+        <p>Ayyub</p>
+        <p>Shu'ayb</p>
+        <p>Musa</p>
+        <p>Harun</p>
+        <p>Yunus</p>
+        <p>Dawud</p>
+        <p>Sulayman</p>
+        <p>Ilyas</p>
+        <p>al-Yasa'</p>
+        <p>Zakariyya</p>
+        <p>Yahya</p>
+        <p>'Isa</p>
+        <p>Dhu'l-Kifl</p>
+        <p class="pillar">Muhammad (ﷺ)</p>
+        <div class="pillars-grid">
+            <!-- Add your pillar icons here -->
+        </div>
+    </section>
+
+    <section class="Angels">
+        <a href="https://islamqa.info/en/answers/843/angels-in-islam#names-of-angels"><h1>Names of angels that are known
+            to us</h1></a>
+        <p>Jibreel</p>
+        <p>Mikail</p>
+        <p>Israfil</p>
+        <p>Malik</p>
+        <p>Munkar & Nakeer</p>
+        <p class="pillar">Haroot & Maroot</p>
+        <div class="pillars-grid">
+            <!-- Add your pillar icons here -->
+        </div>
     </section>
     <!-- Repeat sections as needed -->
 </main>
